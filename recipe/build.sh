@@ -7,7 +7,6 @@ export PREFIX=$CONDA_PREFIX
 echo PREFIX=$PREFIX
 cmake                                                 \
     ../isis                                           \
-    -DCMAKE_CXX_FLAGS="-Wno-error"                    \
     -GNinja                                           \
     -DJP2KFLAG=OFF                                    \
     -Dpybindings=OFF                                  \
@@ -17,6 +16,6 @@ cmake                                                 \
     -DNN_INCLUDE_DIR=$CONDA_PREFIX/include            \
     -DCMAKE_INSTALL_PREFIX=${PREFIX}                  \
     -DOPENCV_INCLUDE_DIR:PATH=$PREFIX/include/opencv4 \
-    -DCMAKE_CXX_FLAGS="-I$CONDA_PREFIX/include"
+    -DCMAKE_CXX_FLAGS="-I$CONDA_PREFIX/include -Wno-error"
 ninja install
 

@@ -1,0 +1,85 @@
+{% set name = "isis" %}
+{% set version = "8.2.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/USGS-Astrogeology/ISIS3/archive/{{ version }}.tar.gz
+  sha256: ""  # Add checksum here
+
+build:
+  number: 0
+  skip: true  # [win]
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - cmake >=3.10
+    - make  # [unix]
+  host:
+    - python
+    - qt
+    - qwt
+    - geos
+    - geotiff
+    - xerces-c
+    - protobuf
+    - eigen
+    - gsl
+    - jama
+    - superlu
+    - gmm
+    - cspice
+    - boost-cpp
+    - tiff
+    - libpng
+    - jpeg
+    - hdf5
+    - sqlite
+    - libcurl
+  run:
+    - python
+    - qt
+    - qwt
+    - geos
+    - geotiff
+    - xerces-c
+    - protobuf
+    - eigen
+    - gsl
+    - jama
+    - superlu
+    - gmm
+    - cspice
+    - boost-cpp
+    - tiff
+    - libpng
+    - jpeg
+    - hdf5
+    - sqlite
+    - libcurl
+
+test:
+  commands:
+    - test -f $PREFIX/bin/qview  # [unix]
+
+about:
+  home: https://github.com/USGS-Astrogeology/ISIS3
+  license: CC0-1.0
+  license_family: OTHER
+  license_file: LICENSE
+  summary: 'Integrated Software for Imagers and Spectrometers'
+  description: |
+    ISIS (Integrated Software for Imagers and Spectrometers) is a software 
+    package developed by the USGS Astrogeology Science Center to process 
+    planetary images. This is an experimental feedstock for building ISIS 
+    using conda.
+  doc_url: https://isis.astrogeology.usgs.gov/
+  dev_url: https://github.com/USGS-Astrogeology/ISIS3
+
+extra:
+  recipe-maintainers:
+    - Add maintainer GitHub usernames here

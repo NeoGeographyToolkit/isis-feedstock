@@ -1,0 +1,18 @@
+python:
+  - 3.9
+  - 3.10
+  - 3.11
+
+c_compiler:
+  - gcc     # [linux]
+  - clang   # [osx]
+
+cxx_compiler:
+  - gxx     # [linux]
+  - clangxx # [osx]
+
+channel_sources:
+  - conda-forge,defaults
+
+channel_targets:
+  - conda-forge main

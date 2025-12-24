@@ -7,6 +7,7 @@ export PREFIX=$CONDA_PREFIX
 echo PREFIX=$PREFIX
 cmake                                                 \
     ../isis                                           \
+    -DCMAKE_CXX_FLAGS="-Wno-error"                    \
     -GNinja                                           \
     -DJP2KFLAG=OFF                                    \
     -Dpybindings=OFF                                  \

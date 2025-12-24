@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/USGS-Astrogeology/ISIS3/archive/{{ version }}.tar.gz
-  sha256: ""  # Add checksum here
+  sha256: ""  # TODO: Add checksum here - run `openssl sha256 <tarball>` to get the hash
 
 build:
   number: 0
@@ -82,4 +82,4 @@ about:
 
 extra:
   recipe-maintainers:
-    - Add maintainer GitHub usernames here
+    # TODO: Add maintainer GitHub usernames here before submitting to conda-forge

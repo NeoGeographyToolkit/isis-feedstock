@@ -14,5 +14,7 @@ cxx_compiler:
 channel_sources:
   - conda-forge,defaults
 
-channel_targets:
-  - conda-forge main
+# Note: channel_targets is typically used in conda-forge infrastructure
+# Remove or comment out for experimental/standalone feedstocks
+# channel_targets:
+#   - conda-forge main

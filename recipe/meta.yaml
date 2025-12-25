@@ -5,8 +5,10 @@ package:
     version: {{ version }}
 
 source:
-  git_url: 'https://github.com/DOI-USGS/ISIS3.git'
-  git_tag: 9.0.0
+  git_url: https://github.com/DOI-USGS/ISIS3.git
+  git_rev: 3c026c0e4 # latest
+  #git_url: 'git@github.com:oleg-alexandrov/ISIS3.git'
+  #git_rev: fix_int
 
 build:
     number: 0

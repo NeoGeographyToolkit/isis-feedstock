@@ -1,186 +1,119 @@
-{% set version = "9.0.0_asp" %}
+{% set version = "10.0.0" %}
 
 package:
-    name: isis
-    version: {{ version }}
+  name: isis
+  version: {{ version }}
 
+# ASP build: source = OUR fork oleg-alexandrov/ISIS3, branch try_5955 = PR
+# DOI-USGS/ISIS3#6046 (rebased on dev) @ 4f24a9ac5. Carries Chandrayaan-2
+# non-nadir + KPLO ShadowCam, beyond what USGS has published. NOT upstream.
 source:
-  git_url: https://github.com/DOI-USGS/ISIS3.git
-  git_rev: 3c026c0e4 # latest
-  #git_url: 'git@github.com:oleg-alexandrov/ISIS3.git'
-  #git_rev: fix_int
+  git_url: https://github.com/oleg-alexandrov/ISIS3.git
+  git_rev: 4f24a9ac5e51c736ba8822f9e3402ea26c721405
 
 build:
-    number: 0
+  number: 0
+  string: asp_0          # ASP channel marker; bump asp_N to re-spin (append-only)
+  skip: true  # [win]
 
+# Deps PINNED HARD to isis_dev's exact versions (Oleg) so the built isis
+# installs cleanly into isis_dev (private channel, no external conflict). This
+# is the ISIS 10.x environment.yml spec, minus docs/test/coverage tools
+# (barebones: no tests, no docs, no JP2/Kakadu) and with our asp
+# ale/usgscsm/spiceql. Linux-only deps marked # [linux] for the later pass.
 requirements:
-    build:
-        - ale =0.11.0,<1
-        - aom
-        - armadillo
-        - boost >=1.76.0,<1.82
-        - boost-cpp >=1.76.0,<1.82
-        - blas
-        - bullet >=3.25
-        - bz2file
-        - bzip2
-        - cmake >=3.27,<3.28
-        - cspice =67
-        - csm >=3.0.3,<3.0.4
-        - curl >=8.4.0,<8.5
-        - cxx-compiler=1.7
-        - doxygen
-        - eigen >=3, <4
-        - embree >=3, <4
-        - ffmpeg
-        - geos >=3.12,<3.13
-        - geotiff
-        - gdal >=3.7,<3.9
-        - gmp
-        - gcovr
-        - graphviz
-        - conda-forge::gsl >=2.6, <2.7
-        - hdf5
-        - highfive
-        - icu
-        - usgs-astrogeology::inja
-        - jama
-        - kalasiris
-        - krb5
-        - libgdal >=3.7,<3.9
-        - libopencv >=4.5,<4.10
-        - libpng >=1.6.34,<1.7
-        - libprotobuf >=4,<5
-        - libtiff >=4.5,<4.8
-        - libxml2
-        - make
-        - mesalib
-        - mysql
-        - nanoflann>=1.4.2,<1.5
-        - nlohmann_json=3.11.2
-        - ninja >=1.10,<1.11
-        - nn
-        - opencv >=4.5,<4.10
-        - openssl >=3.1.2,<3.5
-        - pcl >=1.13,<1.14
-        - pdal=2.6
-        - plio=1.5.3
-        - protobuf >=4,<5
-        - python >=3.9
-        - python_abi >=3.9
-        - pytest
-        - rclone
-        - qhull
-        - qt-main>=5.15, <5.16
-        - qwt <6.3.0
-        - spiceql =1.2.0
-        - sqlite >=3.46.0,<3.47
-        - suitesparse <7.7.0
-        - superlu
-        - swig
-        - texlive-core
-        - tnt
-        - usgscsm
-        - x264
-        - usgs-astrogeology::xalan-c
-        - xerces-c >=3.2.4,<3.3.0a0
-        - xorg-kbproto
-        - xorg-libice
-        - xorg-libsm
-        - xorg-libx11
-        - xorg-libxi
-        - zlib >=1.3,<1.4.0a0
-
-    run:
-        - ale =0.11.0,<1
-        - aom
-        - armadillo
-        - boost >=1.76.0,<1.82
-        - boost-cpp >=1.76.0,<1.82
-        - blas
-        - bullet >=3.25
-        - bz2file
-        - bzip2
-        - cmake >=3.27,<3.28
-        - cspice =67
-        - csm >=3.0.3,<3.0.4
-        - curl >=8.4.0,<8.5
-        - cxx-compiler=1.7
-        - doxygen
-        - eigen >=3, <4
-        - embree >=3, <4
-        - ffmpeg
-        - geos >=3.12,<3.13
-        - geotiff
-        - gdal >=3.7,<3.9
-        - gmp
-        - gcovr
-        - graphviz
-        - conda-forge::gsl >=2.6, <2.7
-        - hdf5
-        - highfive
-        - icu
-        - usgs-astrogeology::inja
-        - jama
-        - kalasiris
-        - krb5
-        - libgdal >=3.7,<3.9
-        - libopencv >=4.5,<4.10
-        - libpng >=1.6.34,<1.7
-        - libprotobuf >=4,<5
-        - libtiff >=4.5,<4.8
-        - libxml2
-        - make
-        - mesalib
-        - mysql
-        - nanoflann>=1.4.2,<1.5
-        - nlohmann_json=3.11.2
-        - ninja >=1.10,<1.11
-        - nn
-        - opencv >=4.5,<4.10
-        - openssl >=3.1.2,<3.5
-        - pcl >=1.13,<1.14
-        - pdal=2.6
-        - plio=1.5.3
-        - protobuf >=4,<5
-        - python >=3.9
-        - python_abi >=3.9
-        - pytest
-        - rclone
-        - qhull
-        - qt-main>=5.15, <5.16
-        - qwt <6.3.0
-        - spiceql =1.2.0
-        - sqlite >=3.46.0,<3.47
-        - suitesparse <7.7.0
-        - superlu
-        - swig
-        - texlive-core
-        - tnt
-        - usgscsm
-        - x264
-        - usgs-astrogeology::xalan-c
-        - xerces-c >=3.2.4,<3.3.0a0
-        - xorg-kbproto
-        - xorg-libice
-        - xorg-libsm
-        - xorg-libx11
-        - xorg-libxi
-        - zlib >=1.3,<1.4.0a0
+  build:
+    - {{ compiler('cxx') }}
+    - cmake >=3.27,<3.28
+    - ninja >=1.10,<1.11
+    - make
+    - swig
+  host:
+    - ale 1.2.0                 # our asp build (channel priority picks asp_*)
+    - usgscsm 2.0.2             # our asp build
+    - spiceql 1.3.0             # our asp build
+    - aom
+    - armadillo 15.2.3
+    - blas
+    - bullet 3.25
+    - bz2file
+    - bzip2
+    - cspice 67
+    - csm 3.0.3.3
+    - curl >=8.14.1,<9
+    - eigen 3.4.0
+    - embree 3.13.0
+    - ffmpeg
+    - geos 3.14.1
+    - geotiff
+    - gdal 3.12.2
+    - libgdal 3.12.2
+    - gmp
+    - conda-forge::gsl >=2.6,<2.7
+    - hdf5 1.14.6
+    - highfive 3.2.0
+    - icu
+    - inja 3.5.0
+    - jama
+    - kalasiris
+    - krb5
+    - libboost 1.88.0
+    - libopencv 4.12.0
+    - libpng >=1.6.34,<1.7
+    - libprotobuf 6.31.1
+    - libtiff >=4.5,<4.8
+    - libvulkan-headers
+    - libxml2
+    - mesalib
+    - mkl                       # [linux]
+    - mysql
+    - mysql-connector-c         # [linux]
+    - nanoflann >=1.4.2,<1.5
+    - nlohmann_json =3.11.2
+    - nn
+    - minizip =4.0.10
+    - opencv 4.12.0
+    - openssl >=3.5,<4
+    - pcl 1.15.1
+    - pdal 2.10.0
+    - plio >=1.6.3
+    - protobuf 6.31.1
+    - python 3.13
+    - qhull
+    - qt6-main 6.10.2
+    - qt6-multimedia
+    - qwt =6.3.0
+    - spiceypy >=6,<7
+    - sqlite >=3.46.0,<4
+    - suitesparse <7.7.0
+    - superlu
+    - tnt
+    - x264
+    - xalan-c >=1.12,<1.13      # [linux]
+    - xerces-c >=3.3.0,<3.4
+  run:
+    # most shared libs come via host run_exports; list our asp packages + the
+    # runtime essentials + things without run_exports.
+    - ale 1.2.0
+    - usgscsm 2.0.2
+    - spiceql 1.3.0
+    - cspice 67
+    - csm 3.0.3.3
+    - python 3.13
+    - spiceypy >=6,<7
 
 test:
   commands:
-    - test -e $PREFIX/lib/libisis${SHLIB_EXT}
-    - test -e $PREFIX/include/isis/Isis.h
-    - test -e $PREFIX/bin/isisimport
-    - ISISROOT=$PREFIX isisimport -HELP
+    - test -e $PREFIX/bin/isisimport && ls $PREFIX/lib/libisis*${SHLIB_EXT}   # [unix] (lib is libisis10.dylib, not libisis.dylib)
+    - test -e $PREFIX/include/isis/Isis.h        # [unix]
+    - test -e $PREFIX/bin/isisimport             # [unix]
 
 about:
-  home: https://github.com/USGS-Astrogeology/ISIS3
+  home: https://github.com/DOI-USGS/ISIS3
   license: CC0-1.0
-  license_file: LICENSE.md
-  summary: "Unofficial ISIS build recipe for Mac Arm"
+  summary: USGS ISIS, ASP build (PR #6046 - Chandrayaan-2 non-nadir + KPLO ShadowCam)
+  dev_url: https://github.com/DOI-USGS/ISIS3
 
 extra:
   recipe-maintainers:
-    - oleg.alexandrov@gmail.com
+    - oleg-alexandrov

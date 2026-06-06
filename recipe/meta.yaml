@@ -12,8 +12,8 @@ source:
   git_rev: 4f24a9ac5e51c736ba8822f9e3402ea26c721405
 
 build:
-  number: 3
-  string: asp_3
+  number: 2
+  string: asp_2
   skip: true  # [win]
 
 # Deps PINNED HARD to isis_dev's exact versions (Oleg) so the built isis
@@ -51,8 +51,8 @@ requirements:
     - ffmpeg
     - geos 3.14.1
     - geotiff
-    - gdal >=3.12.4,<3.13
-    - libgdal >=3.12.4,<3.13
+    - gdal 3.12.2
+    - libgdal 3.12.2
     - gmp
     - conda-forge::gsl >=2.6,<2.7
     - hdf5 1.14.6

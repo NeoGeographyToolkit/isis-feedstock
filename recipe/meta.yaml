@@ -53,7 +53,6 @@ requirements:
     - geotiff
     - gdal 3.12.2
     - libgdal 3.12.2
-    - proj 9.7.*
     - gmp
     - conda-forge::gsl >=2.6,<2.7
     - hdf5 1.14.6

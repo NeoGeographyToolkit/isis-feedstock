@@ -38,6 +38,7 @@ requirements:
     - aom
     - armadillo 15.2.3          # [arm64]
     - armadillo 15.2.7          # [osx and x86_64]
+    - armadillo 15.2.7          # [linux]
     - blas
     - bullet 3.25
     - bz2file
@@ -57,6 +58,7 @@ requirements:
     - hdf5 1.14.6
     - highfive 3.2.0            # [arm64]
     - highfive 3.3.0            # [osx and x86_64]
+    - highfive 3.3.0            # [linux]
     - icu
     - inja 3.5.0
     - jama

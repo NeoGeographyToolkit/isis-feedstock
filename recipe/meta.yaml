@@ -82,7 +82,11 @@ requirements:
     - mysql-connector-c         # [not (arm64 or aarch64)]
     - nanoflann >=1.4.2,<1.5
     - nlohmann_json =3.11.2
-    - nn
+    - nn                        # [not aarch64]
+    # aarch64: our nasa-channel nn h920789f_2003 is NON-PIC (triangle.o uses
+    # direct ADRP for global plus1mod3/minus1mod3) and breaks the libisis.so
+    # link. conda-forge's h86ecc28_2003 is PIC (GOT-indirect). Pin to it.
+    - nn 1.86.0 h86ecc28_2003   # [aarch64]
     - minizip =4.0.10
     - opencv 4.12.0
     - openssl >=3.5,<4

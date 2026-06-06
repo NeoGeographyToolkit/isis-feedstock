@@ -69,9 +69,9 @@ requirements:
     - libvulkan-headers
     - libxml2
     - mesalib
-    - mkl                       # [not arm64]
+    - mkl                       # [not (arm64 or aarch64)]
     - mysql
-    - mysql-connector-c         # [not arm64]
+    - mysql-connector-c         # [not (arm64 or aarch64)]
     - nanoflann >=1.4.2,<1.5
     - nlohmann_json =3.11.2
     - nn
@@ -93,7 +93,7 @@ requirements:
     - superlu
     - tnt
     - x264
-    - xalan-c >=1.12,<1.13      # [not arm64]
+    - xalan-c >=1.12,<1.13      # [not (arm64 or aarch64)]
     - xerces-c >=3.3.0,<3.4
   run:
     # most shared libs come via host run_exports; list our asp packages + the

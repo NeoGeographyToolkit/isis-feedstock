@@ -30,6 +30,7 @@ requirements:
     - ninja >=1.10,<1.11
     - make
     - swig
+    - doxygen   # ISIS CMakeLists.txt find_program(DOXYGEN) is REQUIRED even with buildDocs=OFF
   host:
     - ale 1.2.0                 # our asp build (channel priority picks asp_*)
     - usgscsm 2.0.2             # our asp build

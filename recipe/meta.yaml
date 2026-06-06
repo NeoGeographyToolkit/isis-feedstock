@@ -32,9 +32,9 @@ requirements:
     - swig
     - doxygen   # ISIS CMakeLists.txt find_program(DOXYGEN) is REQUIRED even with buildDocs=OFF
   host:
-    - ale 1.2.0                 # our asp build (channel priority picks asp_*)
-    - usgscsm 2.0.2             # our asp build
-    - spiceql 1.3.0             # our asp build
+    - ale =1.2.0=asp*                 # our asp build (channel priority picks asp_*)
+    - usgscsm =2.0.2=asp*             # our asp build
+    - spiceql =1.3.0=asp*             # our asp build
     - aom
     - armadillo 15.2.3          # [arm64]
     - armadillo 15.2.7          # [osx and x86_64]
@@ -110,9 +110,9 @@ requirements:
   run:
     # most shared libs come via host run_exports; list our asp packages + the
     # runtime essentials + things without run_exports.
-    - ale 1.2.0
-    - usgscsm 2.0.2
-    - spiceql 1.3.0
+    - ale =1.2.0=asp*
+    - usgscsm =2.0.2=asp*
+    - spiceql =1.3.0=asp*
     - cspice 67
     - csm 3.0.3.3
     - python 3.13

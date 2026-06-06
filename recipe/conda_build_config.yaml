@@ -1,10 +1,9 @@
-# Pin to isis_dev's known-good toolchain (clang 18.1.8 / cxx-compiler 1.9,
-# python 3.13). Do NOT let conda-build pull a newer clang.
+# Mac: clang 18. Linux: gcc 14 (match ASP build).
 python:
   - "3.13"
 c_compiler_version:
   - "18"   # [osx]
-  - "13"   # [linux]
+  - "14"   # [linux]
 cxx_compiler_version:
   - "18"   # [osx]
-  - "13"   # [linux]
+  - "14"   # [linux]

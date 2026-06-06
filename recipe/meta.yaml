@@ -12,8 +12,8 @@ source:
   git_rev: 4f24a9ac5e51c736ba8822f9e3402ea26c721405
 
 build:
-  number: 2
-  string: asp_2          # =asp* pins + gcc 14
+  number: 3
+  string: asp_3
   skip: true  # [win]
 
 # Deps PINNED HARD to isis_dev's exact versions (Oleg) so the built isis

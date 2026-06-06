@@ -72,6 +72,11 @@ requirements:
     - libvulkan-headers
     - libxml2
     - mesalib
+    # linux Qt6/OpenGL needs the EGL/GL dev headers (OPENGL_EGL_INCLUDE_DIR);
+    # osx uses a different GL path so it does not need these.
+    - libgl-devel               # [linux]
+    - libegl-devel              # [linux]
+    - libopengl-devel           # [linux]
     - mkl                       # [not (arm64 or aarch64)]
     - mysql
     - mysql-connector-c         # [not (arm64 or aarch64)]

@@ -40,6 +40,10 @@ requirements:
     - armadillo 15.2.7          # [osx and x86_64]
     - armadillo 15.2.7          # [linux]
     - blas
+    # aarch64: force openblas - conda-forge default blas here is blis, whose
+    # aarch64 2.0 build aborts at runtime in a virtualized VM (bli_gks.c MC/MR).
+    - libblas * *openblas*      # [aarch64]
+    - liblapack * *openblas*    # [aarch64]
     - bullet 3.25
     - bz2file
     - bzip2

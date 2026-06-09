@@ -22,7 +22,7 @@ cmake                                                 \
     -DNN_INCLUDE_DIR=$PREFIX/include                  \
     -DCMAKE_INSTALL_PREFIX=${PREFIX}                  \
     -DOPENCV_INCLUDE_DIR:PATH=$PREFIX/include/opencv4 \
-    -DCMAKE_OSX_DEPLOYMENT_TARGET=15.0                \
+    -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0                \
     -DCMAKE_CXX_FLAGS="-I$PREFIX/include -Wno-error -Wno-deprecated-builtins"
 # Respect conda-build's CPU_COUNT so memory-limited hosts (e.g. the
 # linux-aarch64 docker VM) do not OOM with one g++ per core.

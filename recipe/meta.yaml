@@ -12,8 +12,8 @@ source:
   git_rev: 4f24a9ac5e51c736ba8822f9e3402ea26c721405
 
 build:
-  number: 3
-  string: asp_3
+  number: 4
+  string: asp_4          # glibc floor fix (re-add stdlib pin)
   skip: true  # [win]
 
 # Deps PINNED HARD to isis_dev's exact versions (Oleg) so the built isis
@@ -26,6 +26,7 @@ build:
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
     - cmake >=3.27,<3.28
     - ninja >=1.10,<1.11
     - make
@@ -51,9 +52,8 @@ requirements:
     - ffmpeg
     - geos 3.14.1
     - geotiff
-    - gdal 3.12.2
-    - libgdal 3.12.2
-    - proj 9.7.*
+    - gdal >=3.12.2,<3.13
+    - libgdal >=3.12.2,<3.13
     - gmp
     - conda-forge::gsl >=2.6,<2.7
     - hdf5 1.14.6
@@ -92,7 +92,7 @@ requirements:
     - opencv 4.12.0
     - openssl >=3.5,<4
     - pcl 1.15.1
-    - pdal 2.10.0
+    - pdal >=2.8.4,<3
     - plio >=1.6.3
     - protobuf 6.31.1
     - python 3.13
